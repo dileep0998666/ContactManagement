@@ -53,7 +53,7 @@ If Node.js is not installed, download and install it from the official site.
      npm install react-icons 
      npm start
      npm run dev
-    ```
+    
  # Image of How my FrontEnd Looks Like
  ![Frontend Image](image/frontend.png)
        

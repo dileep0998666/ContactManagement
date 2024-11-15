@@ -1,4 +1,4 @@
-#Contact Management Application
+###Contact Management Application
 
 ## Overview
 
@@ -38,29 +38,36 @@ simple contact management application designed to help businesses keep track of 
 |-- /frontend         # React frontend code
 |-- /backend         # Express backend code
 |-- .env            # Environment variables
-|-- README.md       # This file
+|-- README.md        # This file
 
 ### Required CMDS For Frontend
 
 If Node.js is not installed, download and install it from the official site.
-npm install
-npm install @mui/material @emotion/react @emotion/styled
-npm install axios
-npm install react-icons
-then 
-npm start
-npm run dev
+    ```bash
+
+     npm install
+     npm install @mui/material @emotion/react @emotion/styled
+     npm install axios
+     npm install react-icons 
+     npm start
+     npm run dev
 
 
-### ### Required CMDS For Backend Server
-npm install express mongoose cors dotenv
-node server.js
+
+### Required CMDS For Backend Server
+        
+         npm install express mongoose cors dotenv
+         node server.js
 
 
-i have used mangodb atlass database in .env i have given credentials, if you want your won 
+i have used mangodb atlass database in .env i have given credentials, if you want your own 
 replace with your credentials 
-MONGODB_URI=mongodb+srv://userName:passWord@cluster0.ys1vr.mongodb.net/dataBaseName?retryWrites=true&w=majority
-PORT=3000 
+```bash
+   MONGODB_URI=mongodb+srv://userName:passWord@cluster0.ys1vrmongodb.net/dataBaseName?retryWrites=true&w=majority
+   PORT=3000 
+   ```
+
+
 
 
 ### Challenges i faced 

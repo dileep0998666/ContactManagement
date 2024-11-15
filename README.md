@@ -40,7 +40,7 @@ ErinoCode/
 ├── backend/          # Express backend code  
 ├── .env              # Environment variables (not shared publicly)
 └── README.md         # This file
-
+```
 
 ### Required CMDS For Frontend
 

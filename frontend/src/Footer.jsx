@@ -3,6 +3,8 @@ import { Box, Container, Typography, TextField, Button, Grid } from '@mui/materi
 
 const Footer = () => {
   const [feedback, setFeedback] = useState('');
+  const [status, setStatus] = useState(''); // To track success or error message
+  const [isSubmitting, setIsSubmitting] = useState(false); // To track form submission state
 
   const handleChange = (e) => {
     setFeedback(e.target.value);
@@ -11,22 +13,33 @@ const Footer = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     
+    setIsSubmitting(true); // Set submitting state to true
+    setStatus(''); // Clear previous status message
+
     // Here, we'll send the data to Formspree
-    // Replace 'your-form-id' with your Formspree form ID.
+    // Replace with your Formspree form ID.
     const formData = new FormData();
     formData.append('feedback', feedback);
 
-    fetch('https://formspree.io/f/your-form-id', {
+    fetch('https://formspree.io/f/myzyjqjl', {
       method: 'POST',
       body: formData,
     })
-      .then((response) => response.json())
-      .then((data) => {
-        alert('Feedback sent successfully!');
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error('Failed to send feedback');
+        }
+        return response.json();
+      })
+      .then(() => {
+        setStatus('Feedback sent successfully!'); // Success message
         setFeedback(''); // Clear feedback input after successful submission
       })
       .catch((error) => {
-        alert('Error sending feedback. Please try again later.');
+        setStatus('Error sending feedback. Please try again later.'); // Error message
+      })
+      .finally(() => {
+        setIsSubmitting(false); // Reset submitting state
       });
   };
 
@@ -67,7 +80,6 @@ const Footer = () => {
                 required
                 sx={{
                   mb: 2,
-              
                   maxWidth: '3050px', // Reduce the width of the form even further
                 }}
               />
@@ -85,13 +97,21 @@ const Footer = () => {
                     height: '150%',
                     maxWidth: '120px', // Reduce button width for a more compact look
                   }}
+                  disabled={isSubmitting} // Disable the button while submitting
                 >
-                  Send
+                  {isSubmitting ? 'Sending...' : 'Send'} {/* Show loading text while submitting */}
                 </Button>
               </Box>
             </Grid>
           </Grid>
         </form>
+
+        {/* Status message */}
+        {status && (
+          <Typography variant="body2" color={status.includes('Error') ? 'error' : 'success'} align="center" sx={{ mt: 2 }}>
+            {status}
+          </Typography>
+        )}
       </Container>
     </Box>
   );

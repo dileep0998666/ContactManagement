@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import { TextField, Grid, Button, Alert, Select, MenuItem, FormControl, InputLabel } from '@mui/material';
-import axios from 'axios';
 
 const predefinedJobTitles = ['Manager', 'Engineer', 'Developer', 'Designer', 'Salesperson', 'Other'];
 
@@ -16,7 +15,6 @@ const ContactForm = ({ contact, onSubmit, isEditMode }) => {
   const [phoneError, setPhoneError] = useState('');
   const [formError, setFormError] = useState(false);
   const [isOtherJobTitle, setIsOtherJobTitle] = useState(false);
-  const [duplicateWarning, setDuplicateWarning] = useState('');
 
   useEffect(() => {
     if (isEditMode && contact) {
@@ -61,31 +59,14 @@ const ContactForm = ({ contact, onSubmit, isEditMode }) => {
     setIsOtherJobTitle(value === 'Other');
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
-
-    try {
-      const { data } = await axios.post('/check-duplicates', {
-        email: formData.email,
-        phoneNumber: formData.phoneNumber,
-      });
-
-      if (data.emailExists) {
-        setDuplicateWarning('This email is already in use.');
-        return;
-      }
-
-      if (data.phoneExists) {
-        setDuplicateWarning('This phone number is already in use.');
-        return;
-      }
-
-      setDuplicateWarning('');
-      onSubmit(formData);
-    } catch (error) {
-      console.error('Error checking duplicates:', error);
-      setDuplicateWarning('Same email or phone number already exists.');
+    if (phoneError || formData.phoneNumber.length !== 10) {
+      setFormError(true);
+      return;
     }
+    setFormError(false);
+    onSubmit(formData);
   };
 
   return (
@@ -169,9 +150,9 @@ const ContactForm = ({ contact, onSubmit, isEditMode }) => {
             />
           )}
         </Grid>
-        {duplicateWarning && (
+        {formError && (
           <Grid item xs={12}>
-            <Alert severity="warning">{duplicateWarning}</Alert>
+            <Alert severity="error">Please correct the errors in the form.</Alert>
           </Grid>
         )}
         <Grid item xs={12}>

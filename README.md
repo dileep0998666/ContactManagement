@@ -32,13 +32,15 @@ simple contact management application designed to help businesses keep track of 
    git clone https://github.com/dileep0998666/ErinoCode.git
 
 
-### Project Structure   
+### Project Structure
 
-/ErinoCode
-|-- /frontend         # React frontend code
-|-- /backend         # Express backend code
-|-- .env            # Environment variables
-|-- README.md        # This file
+```plaintext
+ErinoCode/
+├── frontend/         # React frontend code
+├── backend/          # Express backend code  
+├── .env              # Environment variables (not shared publicly)
+└── README.md         # This file
+
 
 ### Required CMDS For Frontend
 

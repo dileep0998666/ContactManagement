@@ -76,7 +76,7 @@ const Header = () => {
     <LogoContainer role="banner" aria-label="Company Logo">
       <Box
         component="img"
-        src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-MM8klbe2akZswEexbZzCdzf1XU9WZy.png"
+        src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-MM8klbe2akZswEexbZzCdzf1XU9WZy.png??"
         alt="Company Logo"
         sx={{
           height: 40,

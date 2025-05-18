@@ -29,7 +29,7 @@ simple contact management application designed to help businesses keep track of 
 1. Clone the repository:
 
    ```bash
-   git clone https://github.com/dileep0998666/ErinoCode.git
+   git clone https://github.com/dileep0998666/ContactManagement.git
 
 
 ### Project Structure
